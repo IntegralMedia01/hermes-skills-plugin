@@ -4,8 +4,11 @@ A Claude Code plugin providing 74 skills from [NousResearch/hermes-agent](https:
 
 ## Installation
 
-```bash
-claude plugin add IntegralMedia01/hermes-skills-plugin
+Add the marketplace and install the plugin:
+
+```
+/plugin marketplace add IntegralMedia01/hermes-skills-plugin
+/plugin install hermes-skills@hermes-skills-plugin
 ```
 
 ## Skills (74 Total)
