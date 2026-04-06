@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "hermes-skills-plugin",
+  "description": "74 skills from NousResearch Hermes Agent — research, ML ops, creative tools, software development, and more",
+  "owner": {
+    "name": "IntegralMedia01",
+    "url": "https://github.com/IntegralMedia01"
+  },
+  "plugins": [
+    {
+      "name": "hermes-skills",
+      "description": "74 skills from NousResearch Hermes Agent — research, ML ops, creative tools, software development, and more",
+      "source": "./",
+      "category": "skills",
+      "tags": ["hermes", "nous-research", "ml-ops", "research", "creative", "software-development"]
+    }
+  ]
+}
