@@ -8,60 +8,69 @@ A Claude Code plugin providing 74 skills from [NousResearch/hermes-agent](https:
 claude plugin add IntegralMedia01/hermes-skills-plugin
 ```
 
-## Skills
+## Skills (74 Total)
 
 | Skill | Description |
 |-------|-------------|
 | `hermes-apple-notes` | Manage Apple Notes via the memo CLI on macOS (create, view, search, edit). |
 | `hermes-apple-reminders` | Manage Apple Reminders via remindctl CLI (list, add, complete, delete). |
-| `hermes-arxiv` | Search and retrieve academic papers from arXiv using their free REST API. |
-| `hermes-ascii-art` | Generate ASCII art using pyfiglet (571 fonts), cowsay, boxes, toilet, image-to-ascii. |
-| `hermes-ascii-video` | Production pipeline for ASCII art video — any format. Converts video/audio/image/GIF. |
-| `hermes-audiocraft-audio-generation` | PyTorch library for audio generation including text-to-music (MusicGen) and text-to-audio. |
-| `hermes-axolotl` | Expert guidance for fine-tuning LLMs with Axolotl - YAML configs, 100+ models, LoRA/QLoRA. |
-| `hermes-blogwatcher` | Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI. |
-| `hermes-claude-code` | Delegate coding tasks to Claude Code (Anthropic's CLI agent). |
-| `hermes-clip` | OpenAI's model connecting vision and language. Zero-shot image classification. |
-| `hermes-codebase-inspection` | Inspect and analyze codebases using pygount for LOC counting, language breakdown. |
-| `hermes-codex` | Delegate coding tasks to OpenAI Codex CLI agent. |
-| `hermes-dogfood` | Systematic exploratory QA testing of web applications — find bugs, capture evidence. |
-| `hermes-dspy` | Build complex AI systems with declarative programming, optimize prompts automatically. |
-| `hermes-evaluating-llms-harness` | Evaluates LLMs across 60+ academic benchmarks (MMLU, HumanEval, GSM8K, TruthfulQA). |
-| `hermes-excalidraw` | Create hand-drawn style diagrams using Excalidraw JSON format. |
-| `hermes-find-nearby` | Find nearby places using OpenStreetMap Nominatim + Overpass API (no API key). |
-| `hermes-findmy` | Track Apple devices and AirTags via FindMy.app on macOS using AppleScript. |
-| `hermes-fine-tuning-with-trl` | Fine-tune LLMs using reinforcement learning with TRL - SFT, DPO, PPO. |
-| `hermes-gguf-quantization` | GGUF format and llama.cpp quantization for efficient CPU/GPU inference. |
-| `hermes-github-actions` | Build, debug, and optimize GitHub Actions CI/CD workflows. |
-| `hermes-github-issues` | Manage GitHub issues via the gh CLI. |
-| `hermes-github-prs` | Manage GitHub pull requests via the gh CLI. |
-| `hermes-github-releases` | Manage GitHub releases and tags via the gh CLI. |
-| `hermes-hackernews` | Search and browse Hacker News via the Algolia HN Search API. |
-| `hermes-image-generation` | Generate images using ComfyUI with local or remote Stable Diffusion models. |
-| `hermes-inference-sh` | Deploy LLMs in seconds with inference.sh. Supports Llama, Mistral, Gemma. |
-| `hermes-instagram-reels` | Download Instagram Reels and posts using gallery-dl. |
-| `hermes-kindle-clippings` | Parse and analyze Kindle clippings using kindle-clippings CLI. |
-| `hermes-lobechat` | Deploy and manage LobeChat — open-source ChatGPT UI with plugin support. |
-| `hermes-lm-studio` | Run and manage local LLMs via LM Studio's REST API. |
-| `hermes-lmarena` | Analyze LLM benchmark data from LMSYS Chatbot Arena leaderboard. |
-| `hermes-macos-automation` | Automate macOS workflows using AppleScript, shortcuts, and system commands. |
-| `hermes-mastodon` | Interact with Mastodon instances via the Mastodon.py API. |
-| `hermes-mcp-server-development` | Build MCP servers for Claude integrations. |
-| `hermes-mlflow` | Track experiments, log models, and manage ML lifecycle with MLflow. |
-| `hermes-model-file` | Create and manage Ollama Modelfiles for custom LLM configurations. |
-| `hermes-obsidian` | Manage Obsidian vaults — create, search, link notes using the REST API. |
-| `hermes-ocr-and-documents` | Extract text from images and PDFs using OCR tools (tesseract, surya). |
-| `hermes-ollama` | Run and manage local LLMs via the Ollama API. |
-| `hermes-open-interpreter` | Execute Python, bash, and JavaScript locally using Open Interpreter. |
-| `hermes-openrouter` | Access 200+ LLMs via OpenRouter's unified API. |
-| `hermes-openvino` | Optimize deep learning models with Intel OpenVINO for fast CPU/iGPU inference. |
-| `hermes-pdf-generation` | Generate PDFs from HTML/Markdown using WeasyPrint or Puppeteer. |
-| `hermes-perplexity` | Search the web using Perplexity AI's API for up-to-date information. |
-| `hermes-popular-web-designs` | Recreate popular website designs as single-file HTML with pixel-perfect accuracy. |
-| `hermes-powerpoint` | Create and edit PowerPoint presentations using python-pptx. |
-| `hermes-product-hunt` | Browse and search Product Hunt launches via their API. |
-| `hermes-python-packaging` | Build, publish, and manage Python packages with modern tooling (uv, hatch, flit). |
-| `hermes-rag` | Implement Retrieval-Augmented Generation with vector databases and LLMs. |
+| `hermes-arxiv` | Search and retrieve academic papers from arXiv using their free REST API. No API key needed. Search by keyword, author, category, or ID. Combine with web_extract or the ocr-and-documents skill to read full paper content. |
+| `hermes-ascii-art` | Generate ASCII art using pyfiglet (571 fonts), cowsay, boxes, toilet, image-to-ascii, remote APIs (asciified, ascii.co.uk), and LLM fallback. No API keys required. |
+| `hermes-ascii-video` | Production pipeline for ASCII art video — any format. Converts video/audio/images/generative input into colored ASCII character video output (MP4, GIF, image sequence). Covers: video-to-ASCII conversion, audio-reactive music visualizers, generative ASCII art animations, hybrid video+audio reactive, text/lyrics overlays, real-time terminal rendering. Use when users request: ASCII video, text art video, terminal-style video, character art animation, retro text visualization, audio visualizer in ASCII, converting video to ASCII art, matrix-style effects, or any animated ASCII output. |
+| `hermes-audiocraft-audio-generation` | PyTorch library for audio generation including text-to-music (MusicGen) and text-to-sound (AudioGen). Use when you need to generate music from text descriptions, create sound effects, or perform melody-conditioned music generation. |
+| `hermes-axolotl` | Expert guidance for fine-tuning LLMs with Axolotl - YAML configs, 100+ models, LoRA/QLoRA, DPO/KTO/ORPO/GRPO, multimodal support |
+| `hermes-blogwatcher` | Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI. Add blogs, scan for new articles, and track what you've read. |
+| `hermes-claude-code` | Delegate coding tasks to Claude Code (Anthropic's CLI agent). Use for building features, refactoring, PR reviews, and iterative coding. Requires the claude CLI installed. |
+| `hermes-clip` | OpenAI's model connecting vision and language. Enables zero-shot image classification, image-text matching, and cross-modal retrieval. Trained on 400M image-text pairs. Use for image search, content moderation, or vision-language tasks without fine-tuning. Best for general-purpose image understanding. |
+| `hermes-codebase-inspection` | Inspect and analyze codebases using pygount for LOC counting, language breakdown, and code-vs-comment ratios. Use when asked to check lines of code, repo size, language composition, or codebase stats. |
+| `hermes-codex` | Delegate coding tasks to OpenAI Codex CLI agent. Use for building features, refactoring, PR reviews, and batch issue fixing. Requires the codex CLI and a git repository. |
+| `hermes-dogfood` | Systematic exploratory QA testing of web applications — find bugs, capture evidence, and generate structured reports |
+| `hermes-dspy` | Build complex AI systems with declarative programming, optimize prompts automatically, create modular RAG systems and agents with DSPy - Stanford NLP's framework for systematic LM programming |
+| `hermes-evaluating-llms-harness` | Evaluates LLMs across 60+ academic benchmarks (MMLU, HumanEval, GSM8K, TruthfulQA, HellaSwag). Use when benchmarking model quality, comparing models, reporting academic results, or tracking training progress. Industry standard used by EleutherAI, HuggingFace, and major labs. Supports HuggingFace, vLLM, APIs. |
+| `hermes-excalidraw` | Create hand-drawn style diagrams using Excalidraw JSON format. Generate .excalidraw files for architecture diagrams, flowcharts, sequence diagrams, concept maps, and more. Files can be opened at excalidraw.com or uploaded for shareable links. |
+| `hermes-find-nearby` | Find nearby places (restaurants, cafes, bars, pharmacies, etc.) using OpenStreetMap. Works with coordinates, addresses, cities, zip codes, or Telegram location pins. No API keys needed. |
+| `hermes-findmy` | Track Apple devices and AirTags via FindMy.app on macOS using AppleScript and screen capture. |
+| `hermes-fine-tuning-with-trl` | Fine-tune LLMs using reinforcement learning with TRL - SFT for instruction tuning, DPO for preference alignment, PPO/GRPO for reward optimization, and reward model training. Use when need RLHF, align model with preferences, or train from human feedback. Works with HuggingFace Transformers. |
+| `hermes-gguf-quantization` | GGUF format and llama.cpp quantization for efficient CPU/GPU inference. Use when deploying models on consumer hardware, Apple Silicon, or when needing flexible quantization from 2-8 bit without GPU requirements. |
+| `hermes-gif-search` | Search and download GIFs from Tenor using curl. No dependencies beyond curl and jq. Useful for finding reaction GIFs, creating visual content, and sending GIFs in chat. |
+| `hermes-github-auth` | Set up GitHub authentication for the agent using git (universally available) or the gh CLI. Covers HTTPS tokens, SSH keys, credential helpers, and gh auth — with a detection flow to pick the right method automatically. |
+| `hermes-github-code-review` | Review code changes by analyzing git diffs, leaving inline comments on PRs, and performing thorough pre-push review. Works with gh CLI or falls back to git + GitHub REST API via curl. |
+| `hermes-github-issues` | Create, manage, triage, and close GitHub issues. Search existing issues, add labels, assign people, and link to PRs. Works with gh CLI or falls back to git + GitHub REST API via curl. |
+| `hermes-github-pr-workflow` | Full pull request lifecycle — create branches, commit changes, open PRs, monitor CI status, auto-fix failures, and merge. Works with gh CLI or falls back to git + GitHub REST API via curl. |
+| `hermes-github-repo-management` | Clone, create, fork, configure, and manage GitHub repositories. Manage remotes, secrets, releases, and workflows. Works with gh CLI or falls back to git + GitHub REST API via curl. |
+| `hermes-google-workspace` | Gmail, Calendar, Drive, Contacts, Sheets, and Docs integration via Python. Uses OAuth2 with automatic token refresh. No external binaries needed — runs entirely with Google's Python client libraries in the Hermes venv. |
+| `hermes-grpo-rl-training` | Expert guidance for GRPO/RL fine-tuning with TRL for reasoning and task-specific model training |
+| `hermes-guidance` | Control LLM output with regex and grammars, guarantee valid JSON/XML/code generation, enforce structured formats, and build multi-step workflows with Guidance - Microsoft Research's constrained generation framework |
+| `hermes-heartmula` | Set up and run HeartMuLa, the open-source music generation model family (Suno-like). Generates full songs from lyrics + tags with multilingual support. |
+| `hermes-hermes-agent` | Complete guide to using and extending Hermes Agent — CLI usage, setup, configuration, spawning additional agents, gateway platforms, skills, voice, tools, profiles, and a concise contributor reference. Load this skill when helping users configure Hermes, troubleshoot issues, spawn agent instances, or make code contributions. |
+| `hermes-himalaya` | CLI to manage emails via IMAP/SMTP. Use himalaya to list, read, write, reply, forward, search, and organize emails from the terminal. Supports multiple accounts and message composition with MML (MIME Meta Language). |
+| `hermes-huggingface-hub` | Hugging Face Hub CLI (hf) — search, download, and upload models and datasets, manage repos, query datasets with SQL, deploy inference endpoints, manage Spaces and buckets. |
+| `hermes-imessage` | Send and receive iMessages/SMS via the imsg CLI on macOS. |
+| `hermes-jupyter-live-kernel` | Run Jupyter kernels in the Hermes venv to execute Python code interactively. Create notebooks, run cells, render outputs including plots. |
+| `hermes-linear` | Manage Linear issues, projects, and teams via the GraphQL API. Create, update, search, and organize issues. Uses API key auth (no OAuth needed). All operations via curl — no dependencies. |
+| `hermes-llama-cpp` | Runs LLM inference on CPU, Apple Silicon, and consumer GPUs without NVIDIA hardware. Use for edge deployment, M1/M2/M3 Macs, AMD/Intel GPUs, or when CUDA is unavailable. Supports GGUF quantization (1.5-8 bit) for reduced memory and 4-10× speedup vs PyTorch on CPU. |
+| `hermes-manim-video` | Production pipeline for mathematical and technical animations using Manim Community Edition. Creates 3Blue1Brown-style explainer videos, algorithm visualizations, equation derivations, architecture diagrams, and data stories. Use when users request: animated explanations, math animations, concept visualizations, algorithm walkthroughs, technical explainers, 3Blue1Brown style videos, or any programmatic animation with geometric/mathematical content. |
+| `hermes-mcporter` | Use the mcporter CLI to list, configure, auth, and call MCP servers/tools directly (HTTP or stdio), including ad-hoc servers, config edits, and CLI/type generation. |
+| `hermes-minecraft-modpack-server` | Set up a modded Minecraft server from a CurseForge/Modrinth server pack zip. Covers NeoForge/Forge install, Java version, JVM tuning, firewall, LAN config, backups, and launch scripts. |
+| `hermes-modal-serverless-gpu` | Serverless GPU cloud platform for running ML workloads. Use when you need on-demand GPU access without infrastructure management, deploying ML models as APIs, or running batch jobs with automatic scaling. |
+| `hermes-nano-pdf` | Edit PDFs with natural-language instructions using the nano-pdf CLI. Modify text, fix typos, update titles, and make content changes to specific pages without manual editing. |
+| `hermes-native-mcp` | Built-in MCP (Model Context Protocol) client that connects to external MCP servers, discovers their tools, and registers them as native Hermes Agent tools. Supports stdio and HTTP transports with automatic reconnection, security filtering, and zero-config tool injection. |
+| `hermes-notion` | Notion API for creating and managing pages, databases, and blocks via curl. Search, create, update, and query Notion workspaces directly from the terminal. |
+| `hermes-obliteratus` | Remove refusal behaviors from open-weight LLMs using OBLITERATUS — mechanistic interpretability techniques (diff-in-means, SVD, whitened SVD, LEACE, SAE decomposition, etc.) to excise guardrails while preserving reasoning. 9 CLI methods, 28 analysis modules, 116 model presets across 5 compute tiers, tournament evaluation, and telemetry-driven recommendations. Use when a user wants to uncensor, abliterate, or remove refusal from an LLM. |
+| `hermes-obsidian` | Read, search, and create notes in the Obsidian vault. |
+| `hermes-ocr-and-documents` | Extract text from PDFs and scanned documents. Use web_extract for remote URLs, pymupdf for local text-based PDFs, marker-pdf for OCR/scanned docs. For DOCX use python-docx, for PPTX see the powerpoint skill. |
+| `hermes-opencode` | Delegate coding tasks to OpenCode CLI agent for feature implementation, refactoring, PR review, and long-running autonomous sessions. Requires the opencode CLI installed and authenticated. |
+| `hermes-openhue` | Control Philips Hue lights, rooms, and scenes via the OpenHue CLI. Turn lights on/off, adjust brightness, color, color temperature, and activate scenes. |
+| `hermes-outlines` | Guarantee valid JSON/XML/code structure during generation, use Pydantic models for type-safe outputs, support local models (Transformers, vLLM), and maximize inference speed with Outlines - dottxt.ai's structured generation library |
+| `hermes-peft-fine-tuning` | Fine-tune LLMs with Parameter Efficient Fine-Tuning (PEFT) — LoRA, QLoRA, prefix-tuning, prompt-tuning. Memory efficient, works on limited hardware. Use when fine-tuning on consumer GPUs, reducing training time, or adapting pretrained models without full-weight updates. |
+| `hermes-plan` | Guide users through AI-native planning for complex projects. Use when starting feature development, architecture design, or multi-step projects. Breaks goals into structured, testable milestones. |
+| `hermes-pokemon-player` | Play Pokémon games (Red, Blue, Yellow, Gold, Silver, Crystal, Ruby, Sapphire) in your terminal using the pokete CLI. Battle, catch Pokémon, level up, and explore with text-based gameplay. |
+| `hermes-polymarket` | Predict market outcomes using Polymarket's API. Search, analyze, and place bets on events (sports, politics, tech, crypto) via binary option markets. Uses Polymarket's REST API with no auth needed for read operations. |
+| `hermes-popular-web-designs` | Recreate popular website designs (100+ sites: Apple, Figma, Linear, Stripe, Vercel, etc.) as single-file HTML with pixel-perfect accuracy. Use when users ask for HTML, site demos, design recreation, or templates. Hand-crafted from screenshots, no code generation or Figma scraping. Styles are pure CSS. |
+| `hermes-powerpoint` | Create and edit PowerPoint presentations using python-pptx. Add slides, text, tables, images, charts. Full presentation lifecycle: create, edit, add speakers notes, save as PPTX. For editing existing presentations in-memory. |
+| `hermes-product-hunt` | Browse and search Product Hunt launches via their API. Get daily trending products, search by category, view comments, and upvote. No authentication required for reads. |
+| `hermes-python-packaging` | Build, publish, and manage Python packages with modern tooling (uv, hatch, flit). Create, test, and release Python projects. |
+| `hermes-rag` | Implement Retrieval-Augmented Generation with vector databases and LLMs. Build question-answering systems, semantic search, and knowledge-base Q&A with local or hosted models. |
 | `hermes-reddit` | Browse Reddit and search posts/comments using the PRAW API. |
 | `hermes-research-paper-writing` | Write academic research papers following IEEE/ACM formatting standards. |
 | `hermes-runway` | Generate videos with Runway ML's Gen-3 API. |
@@ -72,11 +81,11 @@ claude plugin add IntegralMedia01/hermes-skills-plugin
 | `hermes-stable-diffusion` | Generate images with Stable Diffusion via Automatic1111 or ComfyUI APIs. |
 | `hermes-steam` | Browse Steam games and player data via the Steam Web API. |
 | `hermes-svelte` | Build reactive web UIs with Svelte and SvelteKit. |
-| `hermes-test-driven-development` | Enforces RED-GREEN-REFACTOR cycle with test-first approach. |
+| `hermes-test-driven-development` | Use when implementing any feature or bugfix, before writing implementation code. Enforces RED-GREEN-REFACTOR cycle with test-first approach. |
 | `hermes-twitter-x` | Interact with Twitter/X using Tweepy or the v2 API. |
 | `hermes-vllm` | Deploy and serve LLMs with high throughput using vLLM. |
 | `hermes-webhook-subscriptions` | Create and manage webhook subscriptions for event-driven automation. |
-| `hermes-weave` | Track and evaluate LLM applications with Weights & Biases Weave. |
+| `hermes-weights-and-biases` | Track and evaluate LLM applications with Weights & Biases Weave. |
 | `hermes-whisper` | Transcribe audio and video using OpenAI Whisper locally or via API. |
 | `hermes-wikipedia` | Search and retrieve Wikipedia articles via the MediaWiki API. |
 | `hermes-windows-automation` | Automate Windows using PowerShell, pywinauto, and Win32 API. |
@@ -93,7 +102,7 @@ When NousResearch/hermes-agent ships new skills:
 ```bash
 git subtree pull --prefix=upstream https://github.com/NousResearch/hermes-agent.git main --squash
 node build.js
-git add skills/ skills-index.json
+git add skills/ skills-index.json README.md .claude-plugin/plugin.json
 git commit -m "Sync upstream: rebuild skills from hermes-agent"
 git push
 ```
