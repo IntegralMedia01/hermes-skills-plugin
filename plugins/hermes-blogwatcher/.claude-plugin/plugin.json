@@ -1,0 +1,5 @@
+{
+  "name": "hermes-blogwatcher",
+  "version": "1.0.0",
+  "description": "Monitor blogs and RSS/Atom feeds for updates using the blogwatcher CLI. Add blogs, scan for new articles, and track what you've read."
+}

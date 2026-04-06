@@ -1,0 +1,5 @@
+{
+  "name": "hermes-pytorch-fsdp",
+  "version": "1.0.0",
+  "description": "Expert guidance for Fully Sharded Data Parallel training with PyTorch FSDP - parameter sharding, mixed precision, CPU offloading, FSDP2"
+}

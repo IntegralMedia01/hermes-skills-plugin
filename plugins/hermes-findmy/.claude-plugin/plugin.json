@@ -1,0 +1,5 @@
+{
+  "name": "hermes-findmy",
+  "version": "1.0.0",
+  "description": "Track Apple devices and AirTags via FindMy.app on macOS using AppleScript and screen capture."
+}

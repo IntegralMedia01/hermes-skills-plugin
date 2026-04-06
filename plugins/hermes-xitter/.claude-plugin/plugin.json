@@ -1,0 +1,5 @@
+{
+  "name": "hermes-xitter",
+  "version": "1.0.0",
+  "description": "Interact with X/Twitter via the x-cli terminal client using official X API credentials. Use for posting, reading timelines, searching tweets, liking, retweeting, bookmarks, mentions, and user lookups."
+}

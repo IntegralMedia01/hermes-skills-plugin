@@ -1,0 +1,5 @@
+{
+  "name": "hermes-grpo-rl-training",
+  "version": "1.0.0",
+  "description": "Expert guidance for GRPO/RL fine-tuning with TRL for reasoning and task-specific model training"
+}

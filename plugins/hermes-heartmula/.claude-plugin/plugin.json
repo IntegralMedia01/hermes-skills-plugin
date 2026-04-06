@@ -1,0 +1,5 @@
+{
+  "name": "hermes-heartmula",
+  "version": "1.0.0",
+  "description": "Set up and run HeartMuLa, the open-source music generation model family (Suno-like). Generates full songs from lyrics + tags with multilingual support."
+}

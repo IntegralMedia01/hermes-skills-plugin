@@ -1,0 +1,5 @@
+{
+  "name": "hermes-webhook-subscriptions",
+  "version": "1.0.0",
+  "description": "Create and manage webhook subscriptions for event-driven agent activation. Use when the user wants external services to trigger agent runs automatically."
+}

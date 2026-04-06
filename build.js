@@ -3,7 +3,8 @@
  * build.js — Converts NousResearch/hermes-agent skills into Claude Code plugin skills.
  *
  * - Reads from ./upstream/skills/
- * - Outputs to ./skills/ (clean slate each run)
+ * - Outputs each skill as its own plugin under ./plugins/<name>/
+ * - Generates .claude-plugin/marketplace.json listing all plugins
  * - Strips hermes-specific frontmatter, adds hermes- prefix to skill names
  * - Copies supporting files (scripts/, references/, templates/, etc.)
  *
@@ -14,7 +15,8 @@ const fs = require('fs');
 const path = require('path');
 
 const UPSTREAM_SKILLS_DIR = path.join(__dirname, 'upstream', 'skills');
-const OUTPUT_DIR = path.join(__dirname, 'skills');
+const PLUGINS_DIR = path.join(__dirname, 'plugins');
+const MARKETPLACE_PATH = path.join(__dirname, '.claude-plugin', 'marketplace.json');
 
 const EXCLUDED_SKILLS = new Set([
   'godmode',       // jailbreak/safety-bypass tooling
@@ -82,23 +84,20 @@ function main() {
   }
 
   // Clean slate
-  if (fs.existsSync(OUTPUT_DIR)) {
-    fs.rmSync(OUTPUT_DIR, { recursive: true });
+  if (fs.existsSync(PLUGINS_DIR)) {
+    fs.rmSync(PLUGINS_DIR, { recursive: true });
   }
-  fs.mkdirSync(OUTPUT_DIR);
+  fs.mkdirSync(PLUGINS_DIR);
 
   const skillFiles = findSkillFiles(UPSTREAM_SKILLS_DIR);
   let built = 0;
   let skipped = 0;
   const skippedList = [];
+  const marketplacePlugins = [];
 
   for (const skillPath of skillFiles) {
     const skillDir = path.dirname(skillPath);
     const skillName = path.basename(skillDir);
-
-    // Handle case where SKILL.md is directly in category dir (e.g. skills/dogfood/SKILL.md)
-    // In this case skillName = "dogfood" which is correct
-    // For nested: skills/software-development/tdd/SKILL.md → skillName = "tdd"
 
     if (EXCLUDED_SKILLS.has(skillName)) {
       skipped++;
@@ -125,9 +124,27 @@ function main() {
 
     const baseName = parsed.name || skillName;
     const outputName = `hermes-${baseName}`;
-    const outputSkillDir = path.join(OUTPUT_DIR, outputName);
 
-    fs.mkdirSync(outputSkillDir, { recursive: true });
+    // Create plugin directory structure:
+    // plugins/<name>/.claude-plugin/plugin.json
+    // plugins/<name>/skills/<name>/SKILL.md
+    const pluginRoot = path.join(PLUGINS_DIR, outputName);
+    const pluginMetaDir = path.join(pluginRoot, '.claude-plugin');
+    const pluginSkillDir = path.join(pluginRoot, 'skills', outputName);
+
+    fs.mkdirSync(pluginMetaDir, { recursive: true });
+    fs.mkdirSync(pluginSkillDir, { recursive: true });
+
+    // Write plugin.json manifest
+    const pluginJson = {
+      name: outputName,
+      version: parsed.version,
+      description: parsed.description || `Hermes skill: ${baseName}`,
+    };
+    fs.writeFileSync(
+      path.join(pluginMetaDir, 'plugin.json'),
+      JSON.stringify(pluginJson, null, 2) + '\n'
+    );
 
     // Write converted SKILL.md
     const newFrontmatter = buildFrontmatter({
@@ -135,36 +152,46 @@ function main() {
       description: parsed.description || `Hermes skill: ${baseName}`,
       version: parsed.version,
     });
-    fs.writeFileSync(path.join(outputSkillDir, 'SKILL.md'), newFrontmatter + parsed.body);
+    fs.writeFileSync(path.join(pluginSkillDir, 'SKILL.md'), newFrontmatter + parsed.body);
 
     // Copy supporting files (scripts/, references/, templates/, etc.)
-    copyDir(skillDir, outputSkillDir);
+    copyDir(skillDir, pluginSkillDir);
+
+    // Add to marketplace index
+    marketplacePlugins.push({
+      name: outputName,
+      description: parsed.description || `Hermes skill: ${baseName}`,
+      source: `./plugins/${outputName}`,
+      category: 'productivity',
+      tags: ['hermes', 'nous-research'],
+    });
 
     built++;
   }
 
+  // Sort marketplace plugins by name
+  marketplacePlugins.sort((a, b) => a.name.localeCompare(b.name));
+
+  // Write marketplace.json
+  const marketplace = {
+    $schema: 'https://anthropic.com/claude-code/marketplace.schema.json',
+    name: 'hermes-skills-plugin',
+    description: `${built} skills from NousResearch Hermes Agent — research, ML ops, creative tools, software development, and more`,
+    owner: {
+      name: 'IntegralMedia01',
+      url: 'https://github.com/IntegralMedia01',
+    },
+    plugins: marketplacePlugins,
+  };
+
+  fs.mkdirSync(path.dirname(MARKETPLACE_PATH), { recursive: true });
+  fs.writeFileSync(MARKETPLACE_PATH, JSON.stringify(marketplace, null, 2) + '\n');
+
   console.log(`\nBuild complete:`);
-  console.log(`  Built:   ${built} skills`);
-  console.log(`  Skipped: ${skipped} (${skippedList.join(', ')})`);
-  console.log(`  Output:  ./skills/\n`);
-
-  // Write a skill index for README generation
-  const index = [];
-  for (const outputSkillDir of fs.readdirSync(OUTPUT_DIR).sort()) {
-    const skillMd = path.join(OUTPUT_DIR, outputSkillDir, 'SKILL.md');
-    if (!fs.existsSync(skillMd)) continue;
-    const content = fs.readFileSync(skillMd, 'utf8');
-    const parsed = parseFrontmatter(content);
-    if (parsed) {
-      index.push({ name: parsed.name, description: parsed.description });
-    }
-  }
-
-  fs.writeFileSync(
-    path.join(__dirname, 'skills-index.json'),
-    JSON.stringify(index, null, 2)
-  );
-  console.log(`  Index:   ./skills-index.json (${index.length} skills)\n`);
+  console.log(`  Built:       ${built} plugins`);
+  console.log(`  Skipped:     ${skipped} (${skippedList.join(', ')})`);
+  console.log(`  Output:      ./plugins/`);
+  console.log(`  Marketplace: .claude-plugin/marketplace.json (${marketplacePlugins.length} entries)\n`);
 }
 
 main();

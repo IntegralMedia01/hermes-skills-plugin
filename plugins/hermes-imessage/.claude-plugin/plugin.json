@@ -1,0 +1,5 @@
+{
+  "name": "hermes-imessage",
+  "version": "1.0.0",
+  "description": "Send and receive iMessages/SMS via the imsg CLI on macOS."
+}

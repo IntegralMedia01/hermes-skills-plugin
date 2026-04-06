@@ -1,0 +1,5 @@
+{
+  "name": "hermes-pokemon-player",
+  "version": "1.0.0",
+  "description": "Play Pokemon games autonomously via headless emulation. Starts a game server, reads structured game state from RAM, makes strategic decisions, and sends button inputs — all from the terminal."
+}

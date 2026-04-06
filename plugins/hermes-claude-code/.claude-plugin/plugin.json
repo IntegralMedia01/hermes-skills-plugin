@@ -1,0 +1,5 @@
+{
+  "name": "hermes-claude-code",
+  "version": "2.2.0",
+  "description": "Delegate coding tasks to Claude Code (Anthropic's CLI agent). Use for building features, refactoring, PR reviews, and iterative coding. Requires the claude CLI installed."
+}
